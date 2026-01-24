@@ -1,245 +1,393 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<html class="dark" lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NorthWay CRM - Planos e Preços</title>
-    <!-- Google Fonts: Outfit (Display) & Inter (Body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NorthWay CRM | Organize e Cresça</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap"
-        rel="stylesheet">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
         tailwind.config = {
+            darkMode: "class",
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif'],
-                    },
                     colors: {
-                        northway: {
-                            red: '#fa0102',
-                            orange: '#fe422e',
-                            dark: '#0f0518',
-                            gray: '#f3f4f6',
-                            light: '#fdfdfd',
-                            paper: '#ffffff',
-                            subtle: '#f8fafc'
-                        }
+                        "primary": "#f20d0d",
+                        "background-light": "#f8f5f5",
+                        "background-dark": "#050505",
+                        "surface": "#121212",
+                        "surface-highlight": "#1E1E1E"
                     },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
-                        'glow': '0 0 15px rgba(250, 1, 2, 0.3)',
-                    }
-                }
-            }
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
         }
     </script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@0.292.0/dist/umd/lucide.min.js"></script>
     <style>
-        .plan-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
-        .plan-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(250, 1, 2, 0.4);
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+        body {
+            font-family: 'Manrope', sans-serif;
+            scroll-behavior: smooth;
         }
 
-        .bg-dark-mesh {
-            background-color: #05010d;
-            background-image:
-                radial-gradient(at 0% 0%, rgba(250, 1, 2, 0.05) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(250, 1, 2, 0.03) 0px, transparent 50%);
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
 
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
+        ::-webkit-scrollbar-track {
+            background: #050505;
         }
 
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
     </style>
 </head>
 
-<body class="bg-dark-mesh text-white font-sans selection:bg-northway-red selection:text-white">
-    <div class="min-h-screen overflow-y-auto no-scrollbar pb-20">
-        <!-- Header Section -->
-        <div class="max-w-7xl mx-auto px-6 pt-16 pb-12 text-center">
-            <img src="assets/images/logo.png" alt="NorthWay" class="h-12 mx-auto mb-8 opacity-90">
-            <h1 class="text-4xl md:text-6xl font-display font-bold leading-tight mb-6">
-                Organize clientes, contratos, tarefas <br class="hidden md:block">
-                e <span class="text-northway-red italic">financeiro</span> em um só lugar
-            </h1>
-            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto font-light leading-relaxed">
-                Deixe o amadorismo do Trello e a complexidade do Notion para trás. Migre para o <br
-                    class="hidden md:block">
-                NorthWay CRM e tenha o controle total do seu negócio em uma plataforma profissional.
-            </p>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full border-b border-white/5 bg-background-dark/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="h-10">
+                    <img src="logo.png" alt="NorthWay Logo" class="h-full w-auto object-contain">
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-white/60 hover:text-white text-sm font-medium transition-colors"
+                    href="#problemas">Problemas</a>
+                <a class="text-white/60 hover:text-white text-sm font-medium transition-colors"
+                    href="#solucao">Soluções</a>
+                <a class="text-white/60 hover:text-white text-sm font-medium transition-colors" href="#processo">Como
+                    Funciona</a>
+                <a class="bg-primary hover:bg-red-600 px-6 py-2.5 rounded-full text-white text-sm font-bold transition-all shadow-[0_0_20px_rgba(242,13,13,0.3)] hover:shadow-[0_0_30px_rgba(242,13,13,0.5)]"
+                    href="https://wa.me/5548991369796?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista.">Falar
+                    com Especialista</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-background-dark pt-16 pb-24 overflow-hidden">
+        <!-- Background Elements -->
+        <div
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none">
         </div>
 
-        <!-- Pricing Grid -->
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Start Plan -->
-            <div class="plan-card bg-white/5 backdrop-blur-sm rounded-3xl p-8 flex flex-col">
-                <div class="mb-8">
-                    <h3 class="text-xl font-bold mb-2">Start</h3>
-                    <p class="text-gray-400 text-sm">Para profissionais que precisam de organização e controle inicial.
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="flex flex-col gap-8">
+                <div
+                    class="inline-flex items-center gap-2 bg-surface border border-white/10 px-4 py-1.5 rounded-full w-fit">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    <span class="text-white/80 text-xs font-bold uppercase tracking-wider">Gestão e Crescimento</span>
+                </div>
+
+                <h1 class="text-white text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight">
+                    Organize clientes, contratos, tarefas e finanças <span class="text-primary">em um só lugar.</span>
+                </h1>
+
+                <p class="text-white/60 text-lg lg:text-xl max-w-lg leading-relaxed">
+                    Tudo o que sua pequena empresa precisa para crescer de forma organizada e eficiente, sem planilhas
+                    complexas.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 mt-2">
+                    <a href="https://wa.me/5548991369796?text=Quero%20organizar%20minha%20empresa"
+                        class="bg-primary hover:bg-red-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all flex items-center justify-center gap-3 group shadow-[0_4px_20px_rgba(242,13,13,0.4)] hover:shadow-[0_4px_30px_rgba(242,13,13,0.6)] hover:-translate-y-1">
+                        Começar Agora
+                        <span
+                            class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                </div>
+
+                <p class="text-white/30 text-sm flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base">check_circle</span> Sem cartão de crédito
+                    necessário para demonstração.
+                </p>
+            </div>
+
+            <div class="relative group perspective-1000">
+                <div
+                    class="absolute -inset-1 bg-gradient-to-r from-primary to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200">
+                </div>
+                <div
+                    class="relative bg-surface border border-white/10 rounded-2xl p-2 shadow-2xl transform transition-transform duration-500 hover:rotate-y-2 hover:rotate-x-2">
+                    <!-- Dashboard Image -->
+                    <img src="dashboard-preview.png" alt="NorthWay Dashboard"
+                        class="rounded-xl w-full h-auto object-cover shadow-inner">
+
+                    <!-- Floating Cards Overlay (Visual Flourish) -->
+                    <div class="absolute -bottom-6 -left-6 bg-surface-highlight border border-white/10 p-4 rounded-xl shadow-xl flex items-center gap-4 animate-bounce"
+                        style="animation-duration: 3s;">
+                        <div class="bg-green-500/20 p-2 rounded-lg text-green-500">
+                            <span class="material-symbols-outlined">trending_up</span>
+                        </div>
+                        <div>
+                            <p class="text-xs text-white/50">Vendas hoje</p>
+                            <p class="text-white font-bold">+R$ 1.250,00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="py-24 bg-surface" id="problemas">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-white text-3xl md:text-5xl font-bold mb-6">
+                    Você se identifica com algum desses <span class="text-primary">problemas?</span>
+                </h2>
+                <p class="text-white/60 text-lg">
+                    A maioria das pequenas empresas trava no crescimento porque perde tempo organizando a bagunça ao
+                    invés de vender.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-background-dark border border-white/5 p-8 rounded-2xl hover:border-primary/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div
+                        class="size-14 bg-surface-highlight rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-3xl">person_off</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Leads Esquecidos</h3>
+                    <p class="text-white/60 leading-relaxed">
+                        Perder vendas porque esqueceu de responder um cliente no WhatsApp ou não anotou o follow-up. O
+                        dinheiro fica na mesa.
                     </p>
                 </div>
-                <div class="mb-8">
-                    <div class="flex items-baseline gap-1">
-                        <span class="text-4xl font-bold">R$ 97</span>
-                        <span class="text-gray-500">/mês</span>
-                    </div>
-                </div>
-                <ul class="space-y-4 mb-10 flex-grow">
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> 1 Empresa vinculada</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Até 2 usuários</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Até 500 leads ativos</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Funil de vendas básico</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Gestão de Contratos e Docs</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Dashboard operacional</li>
-                </ul>
-                <button
-                    class="w-full py-4 rounded-xl border border-white/20 font-bold hover:bg-white/10 transition-all">Assinar
-                    Plano Start</button>
-            </div>
 
-            <!-- Professional Plan -->
-            <div
-                class="plan-card bg-white/5 backdrop-blur-sm rounded-3xl p-8 flex flex-col border-2 border-northway-red relative">
+                <!-- Card 2 -->
                 <div
-                    class="absolute -top-4 left-1/2 -translate-x-1/2 bg-northway-red text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg shadow-red-900/40">
-                    Mais Escolhido</div>
-                <div class="mb-8">
-                    <h3 class="text-xl font-bold mb-2">Profissional</h3>
-                    <p class="text-gray-400 text-sm">Acelere seu crescimento com ferramentas avançadas de gestão e
-                        automação.</p>
-                </div>
-                <div class="mb-8">
-                    <div class="flex items-baseline gap-1">
-                        <span class="text-4xl font-bold">R$ 197</span>
-                        <span class="text-gray-500">/mês</span>
+                    class="bg-background-dark border border-white/5 p-8 rounded-2xl hover:border-primary/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div
+                        class="size-14 bg-surface-highlight rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-3xl">folder_off</span>
                     </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Contratos Bagunçados</h3>
+                    <p class="text-white/60 leading-relaxed">
+                        Propostas e contratos espalhados em pastas, e-mails e conversas. Perda de tempo procurando
+                        documentos importantes.
+                    </p>
                 </div>
-                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Tudo no Start, mais:</p>
-                <ul class="space-y-4 mb-10 flex-grow">
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Até 5 usuários ativos</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Até 2.000 leads ativos</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Funil de vendas avançado</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Smart Contracts Automatizados</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Central de Tarefas e Atividades</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Relatórios e Calendário Integrado</li>
-                </ul>
-                <button
-                    class="w-full py-4 rounded-xl bg-northway-red text-white font-bold hover:bg-red-700 transition-all shadow-lg shadow-red-900/20">Assinar
-                    Plano Profissional</button>
-            </div>
 
-            <!-- Business Plan -->
-            <div class="plan-card bg-white/5 backdrop-blur-sm rounded-3xl p-8 flex flex-col">
-                <div class="mb-8">
-                    <h3 class="text-xl font-bold mb-2">Business</h3>
-                    <p class="text-gray-400 text-sm">Escalabilidade total para empresas com múltiplas frentes de
-                        operação.</p>
-                </div>
-                <div class="mb-8">
-                    <div class="flex items-baseline gap-1">
-                        <span class="text-4xl font-bold">R$ 397</span>
-                        <span class="text-gray-500">/mês</span>
+                <!-- Card 3 -->
+                <div
+                    class="bg-background-dark border border-white/5 p-8 rounded-2xl hover:border-primary/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div
+                        class="size-14 bg-surface-highlight rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-3xl">payments</span>
                     </div>
-                </div>
-                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Tudo no Pro, mais:</p>
-                <ul class="space-y-4 mb-10 flex-grow">
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> 10+ usuários (Escalável)</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Leads ilimitados</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Múltiplos funis e Gestão DRE</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Logs e Auditoria de sistema</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Dashboard Executivo Avançado</li>
-                    <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check-circle-2"
-                            class="w-4 h-4 text-northway-red"></i> Suporte Premium Prioritário</li>
-                </ul>
-                <button
-                    class="w-full py-4 rounded-xl border border-white/20 font-bold hover:bg-white/10 transition-all">Assinar
-                    Plano Business</button>
-            </div>
-        </div>
-
-        <!-- Adicionais -->
-        <div class="max-w-7xl mx-auto px-6 mt-24">
-            <h2 class="text-center text-3xl font-display font-bold mb-4">Adicionais e Integrações</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center mt-12">
-                <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
-                    <i data-lucide="message-square" class="w-8 h-8 text-northway-red mx-auto mb-4"></i>
-                    <h4 class="font-bold mb-2">WhatsApp (Z-API)</h4>
-                    <p class="text-xs text-gray-500">Integre suas conversas diretamente no CRM via Z-API.</p>
-                </div>
-                <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
-                    <i data-lucide="dollar-sign" class="w-8 h-8 text-northway-red mx-auto mb-4"></i>
-                    <h4 class="font-bold mb-2">Financeiro (Asaas)</h4>
-                    <p class="text-xs text-gray-500">Cobranças e conciliação automática com Gateway Asaas.</p>
-                </div>
-                <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
-                    <i data-lucide="mail" class="w-8 h-8 text-northway-red mx-auto mb-4"></i>
-                    <h4 class="font-bold mb-2">E-mails (Resend)</h4>
-                    <p class="text-xs text-gray-500">Notificações e transacionais de alta entrega via Resend.</p>
-                </div>
-                <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
-                    <i data-lucide="code-2" class="w-8 h-8 text-northway-red mx-auto mb-4"></i>
-                    <h4 class="font-bold mb-2">Acesso API & Webhooks</h4>
-                    <p class="text-xs text-gray-500">Conectividade total para integrar seu ecossistema.</p>
+                    <h3 class="text-xl font-bold text-white mb-4">Cegueira Financeira</h3>
+                    <p class="text-white/60 leading-relaxed">
+                        Não saber exatamente quanto tem para receber no próximo mês ou quais clientes estão
+                        inadimplentes.
+                    </p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="max-w-7xl mx-auto px-6 mt-32 border-t border-white/5 pt-12">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-gray-500">
-                <div class="flex items-center gap-4">
-                    <img src="assets/images/logo.png" alt="NorthWay" class="h-6 opacity-30 grayscale">
-                    <p>&copy; 2024 NORTHWAY CRM. TODOS OS DIREITOS RESERVADOS.</p>
+    <!-- VSL Video Section -->
+    <section class="py-24 bg-background-dark relative">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-white text-3xl md:text-4xl font-bold mb-12">
+                Veja como a NorthWay resolve isso em <span class="text-primary">minutos</span>
+            </h2>
+
+            <div
+                class="relative w-full aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/zKJnmZwTDJw?si=NorthWayDemo"
+                    title="NorthWay CRM Demo" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-24 bg-surface" id="solucao">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <span class="text-primary font-bold uppercase tracking-wider text-sm mb-2 block">Solução
+                        Completa</span>
+                    <h2 class="text-white text-4xl md:text-5xl font-bold">
+                        Tudo o que você precisa para <span class="text-primary">crescer.</span>
+                    </h2>
                 </div>
-                <div class="flex gap-6 uppercase tracking-widest text-[10px] font-bold">
-                    <a href="#" class="hover:text-white transition-colors">Privacidade</a>
-                    <a href="#" class="hover:text-white transition-colors">Termos</a>
-                    <a href="#" class="hover:text-white transition-colors">LGPD</a>
+                <a href="https://wa.me/5548991369796?text=Quero%20conhecer%20a%20ferramenta"
+                    class="text-white/70 hover:text-primary flex items-center gap-2 font-bold transition-colors">
+                    Ver todas as funcionalidades <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Feature 1 -->
+                <div
+                    class="bg-background-dark p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-surface-highlight rounded-lg flex items-center justify-center text-white mb-4">
+                        <span class="material-symbols-outlined">view_kanban</span>
+                    </div>
+                    <h4 class="text-white font-bold text-lg mb-2">Funil de Vendas</h4>
+                    <p class="text-white/60 text-sm">Visualize suas negociações em um quadro Kanban intuitivo. Arraste e
+                        solte para mover leads.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div
+                    class="bg-background-dark p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-surface-highlight rounded-lg flex items-center justify-center text-white mb-4">
+                        <span class="material-symbols-outlined">description</span>
+                    </div>
+                    <h4 class="text-white font-bold text-lg mb-2">Contratos Automáticos</h4>
+                    <p class="text-white/60 text-sm">Gere contratos e propostas com um clique, usando os dados do
+                        cliente cadastrado.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div
+                    class="bg-background-dark p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-surface-highlight rounded-lg flex items-center justify-center text-white mb-4">
+                        <span class="material-symbols-outlined">attach_money</span>
+                    </div>
+                    <h4 class="text-white font-bold text-lg mb-2">Financeiro Integrado</h4>
+                    <p class="text-white/60 text-sm">Emissão de boletos, controle de inadimplência e fluxo de caixa em
+                        tempo real.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div
+                    class="bg-background-dark p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-surface-highlight rounded-lg flex items-center justify-center text-white mb-4">
+                        <span class="material-symbols-outlined">check_nav</span>
+                    </div>
+                    <h4 class="text-white font-bold text-lg mb-2">Central de Tarefas</h4>
+                    <p class="text-white/60 text-sm">Nunca mais esqueça um follow-up. Organize o dia a dia da sua
+                        equipe.</p>
                 </div>
             </div>
-        </footer>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-        });
-    </script>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-24 bg-background-dark border-t border-white/5" id="processo">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-white text-3xl font-bold">Como funciona?</h2>
+                <p class="text-white/60 mt-4">É mais simples do que você imagina.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <!-- Line Connector (Desktop) -->
+                <div
+                    class="hidden md:block absolute top-12 left-1/6 right-1/6 h-0.5 bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0 z-0">
+                </div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 text-center">
+                    <div
+                        class="size-24 bg-surface mx-auto rounded-full border-4 border-background-dark flex items-center justify-center mb-6 shadow-xl relative group">
+                        <div
+                            class="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:bg-primary/40 transition-all">
+                        </div>
+                        <span class="material-symbols-outlined text-4xl text-primary">chat_bubble</span>
+                    </div>
+                    <h4 class="text-white font-bold text-xl mb-2">1. Fale com um Especialista</h4>
+                    <p class="text-white/60 text-sm px-8">Agende uma conversa rápida no WhatsApp para entendermos sua
+                        necessidade.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 text-center">
+                    <div
+                        class="size-24 bg-surface mx-auto rounded-full border-4 border-background-dark flex items-center justify-center mb-6 shadow-xl relative group">
+                        <div
+                            class="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:bg-primary/40 transition-all">
+                        </div>
+                        <span class="material-symbols-outlined text-4xl text-primary">engineering</span>
+                    </div>
+                    <h4 class="text-white font-bold text-xl mb-2">2. Diagnóstico</h4>
+                    <p class="text-white/60 text-sm px-8">Mapeamos seus processos e mostramos como o CRM resolve seus
+                        gargalos.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 text-center">
+                    <div
+                        class="size-24 bg-surface mx-auto rounded-full border-4 border-background-dark flex items-center justify-center mb-6 shadow-xl relative group">
+                        <div
+                            class="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:bg-primary/40 transition-all">
+                        </div>
+                        <span class="material-symbols-outlined text-4xl text-primary">rocket_launch</span>
+                    </div>
+                    <h4 class="text-white font-bold text-xl mb-2">3. Configuração</h4>
+                    <p class="text-white/60 text-sm px-8">Entregamos sua conta configurada e treinamos sua equipe para
+                        começar a usar.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="https://wa.me/5548991369796?text=Quero%20começar%20agora"
+                    class="bg-white text-background-dark hover:bg-gray-200 font-bold py-4 px-10 rounded-full text-lg transition-all inline-flex items-center gap-2">
+                    Falar com Consultor
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-white/5 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+                <div class="flex items-center gap-3 opacity-50 grayscale hover:grayscale-0 transition-all">
+                    <img src="logo.png" alt="NorthWay" class="h-8">
+                </div>
+                <div class="text-white/40 text-sm">
+                    &copy; 2024 NorthWay. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/5548991369796?text=Olá,%20vim%20pelo%20site."
+        class="fixed bottom-8 right-8 z-50 size-16 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform hover:shadow-[0_4px_30px_rgba(37,211,102,0.6)] animate-pulse">
+        <svg class="size-8" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.522-2.961-2.638-.087-.117-.708-.941-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217s.231.001.332.005c.109.004.253-.041.397.301.144.344.491 1.196.534 1.282.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.303c-.087.101-.177.211-.077.385.101.174.449.741.964 1.201.662.592 1.221.777 1.394.864.174.088.275.073.376-.042.101-.116.434-.506.549-.68.116-.174.231-.144.39-.087.158.058 1.002.473 1.176.56.173.088.289.13.332.202.045.072.045.419-.1.824z">
+            </path>
+        </svg>
+    </a>
+
 </body>
 
 </html>
