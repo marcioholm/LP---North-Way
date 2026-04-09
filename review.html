@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Ambiente de Revisão | Consultor de Campanhas</title>
+
+    <!-- Tailwind & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20d0d", // NorthWay Red
+                        "background-dark": "#050505", // Deep Black
+                        "surface": "#121212", // Dark Gray Surface
+                        "surface-light": "#1E1E1E", // Highlight
+                        "warning": "#fbbf24", // Yellow for Meta notices
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: #ffffff;
+            font-weight: 800;
+        }
+        .prose p, .prose li {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+        .prose h1 {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+            margin-top: 3rem;
+        }
+        .prose h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        .evidence-img {
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            margin: 2rem 0;
+            width: 100%;
+        }
+        .marker-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+            margin: 3rem 0;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-white overflow-x-hidden selection:bg-primary selection:text-white pb-20">
+
+    <!-- HEADER -->
+    <header class="fixed top-0 z-50 w-full bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html">
+                <img src="logo.png" alt="NorthWay Logo" class="h-8 md:h-10 w-auto object-contain">
+            </a>
+
+            <div class="flex items-center gap-6">
+                <span class="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-bold uppercase tracking-wide">
+                    Meta Review Mode
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="pt-32 pb-20 relative overflow-hidden">
+        <!-- Background Glow -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 !border-none !p-0">Consultor de Campanhas</h1>
+                <p class="text-xl text-white/60">Ambiente de Revisão para Análise da Meta</p>
+                <p class="mt-6 text-white/40 italic">Ferramenta interna de monitoramento, análise e organização de anúncios e páginas do ecossistema Meta.</p>
+            </div>
+
+            <div class="marker-line"></div>
+
+            <!-- WARNING BOX -->
+            <div class="bg-amber-950/20 border border-amber-500/30 p-8 rounded-2xl mb-12">
+                <div class="flex items-center gap-3 mb-4 text-amber-500">
+                    <span class="material-symbols-outlined">warning</span>
+                    <h2 class="!m-0 text-xl font-bold !text-amber-500 uppercase tracking-wider">Ambiente Restrito de Revisão</h2>
+                </div>
+                <div class="prose">
+                    <p class="!text-amber-200/80 font-semibold mb-4 text-lg">Importante para o Analista da Meta</p>
+                    <p class="!text-white/70">Este aplicativo opera atualmente em <strong>ambiente operacional restrito</strong>. O acesso completo à ferramenta <strong>não está disponível publicamente</strong> neste momento.</p>
+                    <p class="!text-white/70 mt-4">A validação da funcionalidade deve ser feita com base em:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-2 !text-white/70">
+                        <li><strong>Vídeo (screencast) enviado na submissão</strong></li>
+                        <li><strong>Prints e documentação de apoio</strong></li>
+                        <li><strong>Fluxo operacional demonstrado nesta página</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="prose max-w-none">
+                
+                <section>
+                    <h1 id="o-que-faz">O que este aplicativo faz</h1>
+                    <p>O <strong>Consultor de Campanhas</strong> foi desenvolvido para apoiar operações de marketing digital e mídia paga.</p>
+                    <p>Ele permite:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>Monitorar anúncios ativos disponíveis publicamente</li>
+                        <li>Analisar criativos e copies</li>
+                        <li>Acompanhar padrões de comunicação de mercado</li>
+                        <li>Organizar dados operacionais</li>
+                        <li>Gerar alertas automáticos para uso interno</li>
+                        <li>Apoiar decisões estratégicas de marketing</li>
+                    </ul>
+                </section>
+
+                <div class="marker-line"></div>
+
+                <section>
+                    <h1 id="como-funciona">Como o sistema funciona</h1>
+                    <h2 id="fluxo-principal">Fluxo principal</h2>
+                    
+                    <div class="grid gap-6 mt-8">
+                        <div class="bg-surface p-6 rounded-xl border border-white/5">
+                            <h3 class="flex items-center gap-3 !mt-0 !mb-2">
+                                <span class="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-bold">1</span>
+                                Autorização e conexão
+                            </h3>
+                            <p class="text-sm">O sistema se conecta aos recursos permitidos da Meta utilizando as permissões solicitadas para leitura e análise operacional.</p>
+                        </div>
+                        
+                        <div class="bg-surface p-6 rounded-xl border border-white/5">
+                            <h3 class="flex items-center gap-3 !mt-0 !mb-2">
+                                <span class="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-bold">2</span>
+                                Consulta de dados
+                            </h3>
+                            <p class="text-sm">O aplicativo consulta dados autorizados relacionados a anúncios e páginas.</p>
+                        </div>
+                        
+                        <div class="bg-surface p-6 rounded-xl border border-white/5">
+                            <h3 class="flex items-center gap-3 !mt-0 !mb-2">
+                                <span class="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-bold">3</span>
+                                Processamento interno
+                            </h3>
+                            <p class="text-sm">As informações são tratadas e organizadas internamente para facilitar a leitura operacional e a análise estratégica.</p>
+                        </div>
+                        
+                        <div class="bg-surface p-6 rounded-xl border border-white/5">
+                            <h3 class="flex items-center gap-3 !mt-0 !mb-2">
+                                <span class="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-bold">4</span>
+                                Geração de resultado
+                            </h3>
+                            <p class="text-sm">O sistema gera alertas, resumos e registros estruturados para uso no dia a dia da operação.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="marker-line"></div>
+
+                <section>
+                    <h1 id="casos-de-uso">Casos de uso demonstrados</h1>
+                    <p>O aplicativo é usado para:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>Monitoramento de anúncios públicos</li>
+                        <li>Leitura e organização de campanhas</li>
+                        <li>Acompanhamento de padrões criativos</li>
+                        <li>Apoio à análise competitiva</li>
+                        <li>Inteligência operacional de mídia</li>
+                    </ul>
+                </section>
+
+                <div class="marker-line"></div>
+
+                <section>
+                    <h1 id="como-validar">Como validar o app</h1>
+                    <p>Para revisar corretamente esta submissão:</p>
+                    <ol class="list-decimal pl-6 space-y-4 mt-4">
+                        <li><strong>Acesse esta página institucional:</strong> Esta página serve como ponto oficial de apoio à revisão do aplicativo.</li>
+                        <li><strong>Assista ao vídeo enviado:</strong> O screencast mostra o fluxo completo de funcionamento da ferramenta.</li>
+                        <li><strong>Consulte os materiais anexados:</strong> As imagens e documentos demonstram a operação da ferramenta e o uso das permissões solicitadas.</li>
+                    </ol>
+                </section>
+
+                <div class="marker-line"></div>
+
+                <!-- EVIDENCES SECTION -->
+                <section>
+                    <h1 id="evidencias">Evidências visuais do sistema</h1>
+                    
+                    <div class="mt-12">
+                        <h2 id="evidencia-1">1. Estrutura operacional do app</h2>
+                        <p class="italic text-sm text-white/40 mb-4">Fluxo de automação construído no n8n para integração com Meta API.</p>
+                        <img src="assets/review-n8n.png" alt="Fluxo Operacional do Sistema" class="evidence-img">
+                    </div>
+
+                    <div class="mt-16">
+                        <h2 id="evidencia-2">2. Registro e organização dos dados</h2>
+                        <p class="italic text-sm text-white/40 mb-4">Estrutura de dados organizada para análise de competitividade e padrões.</p>
+                        <img src="assets/review-sheets.png" alt="Organização de Dados" class="evidence-img">
+                    </div>
+
+                    <div class="mt-16">
+                        <h2 id="evidencia-3">3. Resultado prático do monitoramento</h2>
+                        <p class="italic text-sm text-white/40 mb-4">Exemplo de alerta gerado pelo sistema e enviado para o canal operacional.</p>
+                        <img src="assets/review-whatsapp.png" alt="Resultado do Monitoramento" class="evidence-img">
+                    </div>
+                </section>
+
+                <div class="marker-line"></div>
+
+                <section>
+                    <h1 id="seguranca">Segurança e conformidade</h1>
+                    <p>Este aplicativo:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>utiliza apenas <strong>dados permitidos pelas APIs da Meta</strong></li>
+                        <li>não acessa dados privados sem autorização</li>
+                        <li>não compartilha dados com terceiros sem base legal</li>
+                        <li>não executa scraping fora das diretrizes da plataforma</li>
+                        <li>é utilizado exclusivamente para fins operacionais e analíticos</li>
+                    </ul>
+                </section>
+
+                <div class="marker-line"></div>
+
+                <section>
+                    <h1 id="limitacoes">Limitações atuais</h1>
+                    <p>Situação atual do produto:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>o sistema ainda não possui uma interface pública aberta para login geral</li>
+                        <li>o uso principal acontece em ambiente interno e operacional</li>
+                        <li>a interface final do produto está em evolução</li>
+                    </ul>
+                </section>
+
+                <div class="marker-line"></div>
+
+                <section class="bg-surface p-8 rounded-2xl border border-white/5">
+                    <h1 id="observacao" class="!mt-0 !text-primary">Observação importante</h1>
+                    <p>O <strong>Consultor de Campanhas</strong> não é utilizado para práticas abusivas ou não autorizadas.</p>
+                    <p class="mt-4">Seu uso é restrito a:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-2">
+                        <li>leitura de dados permitidos</li>
+                        <li>organização operacional</li>
+                        <li>análise de mídia</li>
+                        <li>inteligência estratégica de campanhas</li>
+                    </ul>
+                </section>
+
+                <div class="marker-line"></div>
+
+                <section class="text-center bg-white/5 p-12 rounded-3xl border border-white/10">
+                    <h1 id="contato" class="!mt-0 !border-none">Contato para revisão</h1>
+                    <p class="text-lg">Caso o analista precise de informações adicionais:</p>
+                    
+                    <div class="mt-8">
+                        <p class="text-2xl font-bold text-white">Marcio Gabriel Holm Monteiro</p>
+                        <a href="mailto:marciogholmm@gmail.com" class="text-primary hover:underline text-xl font-medium mt-2 block">marciogholmm@gmail.com</a>
+                    </div>
+
+                    <div class="mt-12 text-white/60">
+                        <p class="font-bold text-xl !text-white">Obrigado pela análise</p>
+                        <p class="mt-2 text-sm">Agradecemos a revisão desta solicitação e disponibilizamos esta página como apoio à validação do uso das permissões solicitadas.</p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-surface py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <img src="logo.png" alt="NorthWay" class="h-6 mx-auto md:mx-0 opacity-50 mb-2">
+                <p class="text-white/30 text-sm">Northway — processo, clareza e crescimento sustentável.</p>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <a href="politica-de-privacidade" class="text-sm text-white/40 hover:text-white transition-colors">Privacidade</a>
+                <a href="termos-de-servico" class="text-sm text-white/40 hover:text-white transition-colors">Termos</a>
+                <a href="exclusao-de-dados" class="text-sm text-white/40 hover:text-white transition-colors">Exclusão de Dados</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
