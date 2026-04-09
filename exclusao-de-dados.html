@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Exclusão de Dados | Consultor de Campanhas</title>
+
+    <!-- Tailwind & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20d0d", // NorthWay Red
+                        "background-dark": "#050505", // Deep Black
+                        "surface": "#121212", // Dark Gray Surface
+                        "surface-light": "#1E1E1E", // Highlight
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: #ffffff;
+            font-weight: 800;
+        }
+        .prose p, .prose li {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+        .prose h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            border-left: 4px solid #f20d0d;
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-white overflow-x-hidden selection:bg-primary selection:text-white pb-20">
+
+    <!-- HEADER -->
+    <header class="fixed top-0 z-50 w-full bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html">
+                <img src="logo.png" alt="NorthWay Logo" class="h-8 md:h-10 w-auto object-contain">
+            </a>
+
+            <div class="flex items-center gap-6">
+                <a href="termos-de-servico" class="text-sm font-medium text-white/60 hover:text-white transition-colors">Termos</a>
+                <a href="https://wa.me/5542999896358?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista."
+                    class="hidden md:flex items-center gap-2 text-sm font-bold text-white/80 hover:text-primary transition-colors">
+                    Falar com Especialista
+                    <span class="material-symbols-outlined text-lg">arrow_outward</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="pt-32 pb-20 relative overflow-hidden">
+        <!-- Background Glow -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="mb-12">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Instruções para Exclusão de Dados</h1>
+                <p class="text-primary font-bold">Consultor de Campanhas</p>
+                <p class="text-white/40 text-sm mt-2">Última atualização: 09 de Abril de 2026</p>
+            </div>
+
+            <div class="prose max-w-none">
+                <section class="mb-8 p-6 bg-surface rounded-xl border border-white/5">
+                    <p class="!text-white">Em conformidade com a Lei Geral de Proteção de Dados (LGPD) e as diretrizes da plataforma Meta, o <strong>Consultor de Campanhas</strong> oferece processos claros para que você possa solicitar a exclusão de suas informações de nossa base de dados.</p>
+                </section>
+
+                <section class="mb-8">
+                    <h2 id="compromisso">1. Nosso Compromisso com sua Privacidade</h2>
+                    <p>Respeitamos seu direito ao esquecimento. Se você utilizou nosso aplicativo e deseja que suas informações pessoais ou dados vinculados ao seu perfil de marketing sejam removidos, seguimos procedimentos rigorosos para garantir que essa solicitação seja atendida de forma ágil e segura.</p>
+                </section>
+
+                <section class="mb-8">
+                    <h2 id="solicitacao-direta">2. Como Solicitar a Exclusão (Via E-mail)</h2>
+                    <p>Para solicitar a exclusão total de seus dados persistentes em nossos sistemas, siga as instruções abaixo:</p>
+                    <ol class="list-decimal pl-6 space-y-4 mt-4">
+                        <li>Envie um e-mail para <a href="mailto:marciogholmm@gmail.com" class="text-primary font-bold">marciogholmm@gmail.com</a></li>
+                        <li>No assunto, escreva: <strong>"Solicitação de Exclusão de Dados - [Seu Nome]"</strong>.</li>
+                        <li>No corpo do e-mail, informe o e-mail utilizado no cadastro do aplicativo (se houver) ou o ID da sua conta de anúncios vinculada.</li>
+                        <li>Nossa equipe processará o pedido e enviará uma confirmação de exclusão em até <strong>72 horas úteis</strong>.</li>
+                    </ol>
+                </section>
+
+                <section class="mb-8">
+                    <h2 id="desvinculacao-meta">3. Como Desvincular o Aplicativo da Meta (Facebook/Instagram)</h2>
+                    <p>Caso você queira apenas remover o acesso do <strong>Consultor de Campanhas</strong> aos seus dados da Meta (Facebook/Instagram), você pode fazer isso diretamente pelas configurações da sua conta:</p>
+                    <ul class="list-disc pl-6 space-y-4 mt-4">
+                        <li>Acesse as <strong>Configurações e Privacidade</strong> do seu perfil no Facebook.</li>
+                        <li>Vá em <strong>Segurança e Login</strong> ou <strong>Aplicativos e Sites</strong>.</li>
+                        <li>Localize o aplicativo <strong>"Consultor de Campanhas"</strong> na lista.</li>
+                        <li>Clique em <strong>Remover</strong>.</li>
+                        <li>Siga as instruções na tela para confirmar a desvinculação.</li>
+                    </ul>
+                    <p class="mt-4 italic text-sm text-white/50">Nota: Ao remover o aplicativo por esse caminho, a Meta deixará de enviar novas informações para nós, mas os dados já coletados anteriormente só serão apagados definitivamente se você seguir o passo 2 (solicitação por e-mail).</p>
+                </section>
+
+                <section class="mb-8">
+                    <h2 id="dados-removidos">4. Quais Dados São Excluídos?</h2>
+                    <p>Ao processar sua solicitação, removemos permanentemente:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>Seu nome e e-mail de contato em nossa base.</li>
+                        <li>Tokens de acesso vinculados às suas contas de anúncios.</li>
+                        <li>Qualquer dado pessoal coletado durante o uso da ferramenta.</li>
+                        <li>Histórico de consultas e relatórios gerados especificamente para seu perfil.</li>
+                    </ul>
+                </section>
+
+                <section class="mb-8">
+                    <h2 id="prazos">5. Prazos e Confirmação</h2>
+                    <p>Uma vez solicitada a exclusão via e-mail, nossa equipe realizará a remoção técnica em todos os nossos servidores e backups. Você receberá um e-mail final de confirmação assim que o processo for concluído com sucesso.</p>
+                </section>
+
+                <section class="mb-8">
+                    <h2 id="contato">6. Contato</h2>
+                    <p>Se você tiver qualquer dúvida sobre o processo de exclusão de dados ou sobre como tratamos sua privacidade, não hesite em nos contatar:</p>
+                    <ul class="list-none space-y-2 mt-4">
+                        <li class="flex items-center gap-2">
+                             <span class="material-symbols-outlined text-primary">mail</span> 
+                             <strong>E-mail:</strong> marciogholmm@gmail.com
+                        </li>
+                        <li class="flex items-center gap-2">
+                             <span class="material-symbols-outlined text-primary">language</span> 
+                             <strong>Site:</strong> lp.northwaycompany.com.br
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="mt-20 pt-8 border-t border-white/10 text-center text-white/30 text-sm">
+                <p>&copy; 2026 Consultor de Campanhas. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-surface py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <img src="logo.png" alt="NorthWay" class="h-6 mx-auto md:mx-0 opacity-50 mb-2">
+                <p class="text-white/30 text-sm">Northway — processo, clareza e crescimento sustentável.</p>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <a href="politica-de-privacidade" class="text-sm text-white/40 hover:text-white transition-colors">Privacidade</a>
+                <a href="termos-de-servico" class="text-sm text-white/40 hover:text-white transition-colors">Termos de Serviço</a>
+                <a href="https://www.instagram.com/northway.mkt/" target="_blank"
+                    class="text-white/40 hover:text-white transition-colors flex items-center gap-2">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
+                        class="w-5 h-5 filter grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all">
+                    @northway.mkt
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
